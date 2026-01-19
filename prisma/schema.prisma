@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// User preferences for meal generation
+model UserPreferences {
+  id              String   @id @default(cuid())
+  dietary         String[] // ["vegetarian", "vegan"]
+  allergies       String[] // ["peanuts", "shellfish"]
+  dislikes        String[] // ["cilantro", "olives"]
+  defaultServings Int      @default(2)
+  planDuration    Int      @default(7) // days
+  breakfastCount  Int      @default(0)
+  lunchCount      Int      @default(0)
+  dinnerCount     Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Recipe model
+model Recipe {
+  id           String       @id @default(cuid())
+  title        String
+  description  String?
+  imageUrl     String?
+  source       RecipeSource @default(AI)
+  sourceUrl    String?
+  servings     Int          @default(2)
+  prepTime     Int? // minutes
+  cookTime     Int? // minutes
+  difficulty   Difficulty   @default(MEDIUM)
+  equipment    String[]
+  calories     Int?
+  protein      Int? // grams
+  carbs        Int? // grams
+  fat          Int? // grams
+  ingredients  Ingredient[]
+  instructions String[]
+  isFavorite   Boolean      @default(false)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  // Relations
+  meals Meal[]
+}
+
+enum RecipeSource {
+  AI
+  URL
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+// Ingredient within a recipe
+model Ingredient {
+  id       String             @id @default(cuid())
+  quantity Float
+  unit     String
+  name     String
+  category IngredientCategory @default(OTHER)
+  notes    String? // "diced", "room temperature"
+  recipeId String
+  recipe   Recipe             @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
+
+enum IngredientCategory {
+  PRODUCE
+  DAIRY
+  MEAT
+  SEAFOOD
+  FROZEN
+  PANTRY
+  BAKERY
+  BEVERAGES
+  OTHER
+}
+
+// Meal plan
+model MealPlan {
+  id        String    @id @default(cuid())
+  name      String?
+  startDate DateTime
+  endDate   DateTime
+  days      MealDay[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// A single day in the meal plan
+model MealDay {
+  id         String   @id @default(cuid())
+  date       DateTime
+  mealPlanId String
+  mealPlan   MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  meals      Meal[]
+
+  @@unique([mealPlanId, date])
+}
+
+// A meal slot (links a recipe to a day and meal type)
+model Meal {
+  id        String   @id @default(cuid())
+  mealType  MealType
+  mealDayId String
+  mealDay   MealDay  @relation(fields: [mealDayId], references: [id], onDelete: Cascade)
+  recipeId  String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+
+  @@index([mealDayId])
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+// Pantry items the user already has
+model PantryItem {
+  id       String             @id @default(cuid())
+  name     String             @unique
+  category IngredientCategory @default(OTHER)
+  addedAt  DateTime           @default(now())
+}
