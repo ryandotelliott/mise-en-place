@@ -2,7 +2,6 @@
 
 import { LayoutGroup } from "framer-motion";
 import { useRef } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShoppingItem } from "@/features/shopping/components/shopping-item";
 
 interface ShoppingItemData {
@@ -60,26 +59,24 @@ export function ShoppingSection({
   const sortedItems = [...uncheckedItems, ...checkedItems];
 
   return (
-    <Card className="p-2 gap-2">
-      <CardHeader className="p-2 -mb-2 gap-0">
-        <CardTitle className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+    <div className="py-2 max-w-2xl mx-auto w-full">
+      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm py-2 -mx-1 px-1">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="p-2">
-        <LayoutGroup id={layoutGroupId}>
-          <div className="flex flex-col gap-0.5">
-            {sortedItems.map((item) => (
-              <ShoppingItem
-                key={item.id}
-                item={item}
-                isChecked={checked.has(item.id)}
-                onToggle={onToggle}
-              />
-            ))}
-          </div>
-        </LayoutGroup>
-      </CardContent>
-    </Card>
+        </h3>
+      </div>
+      <LayoutGroup id={layoutGroupId}>
+        <div className="flex flex-col gap-0.5">
+          {sortedItems.map((item) => (
+            <ShoppingItem
+              key={item.id}
+              item={item}
+              isChecked={checked.has(item.id)}
+              onToggle={onToggle}
+            />
+          ))}
+        </div>
+      </LayoutGroup>
+    </div>
   );
 }

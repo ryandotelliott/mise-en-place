@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 import { ShoppingSection } from "@/features/shopping/components/shopping-section";
+import { ShoppingSectionSkeleton } from "@/features/shopping/components/shopping-section-skeleton";
 import { ViewModeToggle } from "@/features/shopping/components/view-mode-toggle";
 
 type ShoppingItem = {
@@ -53,14 +54,13 @@ export default function ShoppingPage() {
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">
             Shopping List
           </h1>
+          <ViewModeToggle viewMode={viewMode} onViewModeChange={setViewMode} />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="h-48 rounded-lg bg-muted/50 animate-pulse"
-            />
-          ))}
+        <div className="flex flex-col">
+          {Array.from({ length: 3 }, (_, i) => {
+            const uniqueId = `shopping-page-skeleton-section-${i}`;
+            return <ShoppingSectionSkeleton key={uniqueId} />;
+          })}
         </div>
       </div>
     );
@@ -86,7 +86,11 @@ export default function ShoppingPage() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className={
+            viewMode === "category"
+              ? "flex flex-col"
+              : "grid grid-cols-1 md:grid-cols-2 gap-6"
+          }
         >
           {viewMode === "category"
             ? byCategory.map((section) => (

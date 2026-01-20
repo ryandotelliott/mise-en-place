@@ -24,7 +24,6 @@ export function ViewModeToggle({
       variant="outline"
       size="sm"
       aria-label="View mode"
-      className="self-start sm:self-auto rounded-lg p-1"
     >
       <ToggleGroupItem value="category">
         <LayoutGrid className="size-4 mr-1" />

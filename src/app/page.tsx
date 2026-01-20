@@ -64,7 +64,7 @@ export default function Home() {
           This Week
         </h1>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
           onClick={() => refetch()}
           disabled={isGenerating}
