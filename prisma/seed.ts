@@ -35,7 +35,7 @@ async function main() {
             unit: "fillet",
             name: "Salmon fillets",
             category: "SEAFOOD",
-            notes: "6 oz each",
+            prepNotes: "6 oz each",
           },
           { quantity: 3, unit: "tbsp", name: "Butter", category: "DAIRY" },
           {
@@ -43,7 +43,7 @@ async function main() {
             unit: "clove",
             name: "Garlic",
             category: "PRODUCE",
-            notes: "minced",
+            prepNotes: "minced",
           },
           { quantity: 1, unit: "tbsp", name: "Olive oil", category: "PANTRY" },
           {
@@ -51,14 +51,14 @@ async function main() {
             unit: "whole",
             name: "Lemon",
             category: "PRODUCE",
-            notes: "juiced",
+            prepNotes: "juiced",
           },
           {
             quantity: 2,
             unit: "tbsp",
             name: "Fresh parsley",
             category: "PRODUCE",
-            notes: "chopped",
+            prepNotes: "chopped",
           },
         ],
       },
@@ -89,7 +89,7 @@ async function main() {
             unit: "lb",
             name: "Chicken breast",
             category: "MEAT",
-            notes: "cubed",
+            prepNotes: "cubed",
           },
           { quantity: 1, unit: "cup", name: "Yogurt", category: "DAIRY" },
           {
@@ -110,14 +110,14 @@ async function main() {
             unit: "whole",
             name: "Onion",
             category: "PRODUCE",
-            notes: "diced",
+            prepNotes: "diced",
           },
           {
             quantity: 4,
             unit: "clove",
             name: "Garlic",
             category: "PRODUCE",
-            notes: "minced",
+            prepNotes: "minced",
           },
           {
             quantity: 2,
@@ -160,14 +160,14 @@ async function main() {
             unit: "oz",
             name: "Mixed mushrooms",
             category: "PRODUCE",
-            notes: "sliced",
+            prepNotes: "sliced",
           },
           {
             quantity: 4,
             unit: "cup",
             name: "Chicken stock",
             category: "PANTRY",
-            notes: "warm",
+            prepNotes: "warm",
           },
           {
             quantity: 0.5,
@@ -180,7 +180,7 @@ async function main() {
             unit: "cup",
             name: "Parmesan",
             category: "DAIRY",
-            notes: "grated",
+            prepNotes: "grated",
           },
           { quantity: 2, unit: "tbsp", name: "Butter", category: "DAIRY" },
           {
@@ -188,7 +188,7 @@ async function main() {
             unit: "whole",
             name: "Shallot",
             category: "PRODUCE",
-            notes: "minced",
+            prepNotes: "minced",
           },
           {
             quantity: 1,
@@ -225,7 +225,7 @@ async function main() {
             unit: "lb",
             name: "Chicken thigh",
             category: "MEAT",
-            notes: "sliced",
+            prepNotes: "sliced",
           },
           {
             quantity: 2,
@@ -295,21 +295,21 @@ async function main() {
             unit: "can",
             name: "Chickpeas",
             category: "PANTRY",
-            notes: "drained",
+            prepNotes: "drained",
           },
           {
             quantity: 1,
             unit: "whole",
             name: "Cucumber",
             category: "PRODUCE",
-            notes: "diced",
+            prepNotes: "diced",
           },
           {
             quantity: 1,
             unit: "cup",
             name: "Cherry tomatoes",
             category: "PRODUCE",
-            notes: "halved",
+            prepNotes: "halved",
           },
           {
             quantity: 0.5,
@@ -329,7 +329,7 @@ async function main() {
             unit: "whole",
             name: "Lemon",
             category: "PRODUCE",
-            notes: "juiced",
+            prepNotes: "juiced",
           },
         ],
       },
@@ -390,8 +390,8 @@ async function main() {
       ingredients: {
         create: [
           {
-            quantity: 1,
-            unit: "whole",
+            quantity: 0.5,
+            unit: "lb",
             name: "Chicken breast",
             category: "MEAT",
           },
@@ -412,7 +412,7 @@ async function main() {
             unit: "whole",
             name: "Cucumber",
             category: "PRODUCE",
-            notes: "sliced",
+            prepNotes: "sliced",
           },
           {
             quantity: 2,

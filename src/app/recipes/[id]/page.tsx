@@ -30,8 +30,8 @@ export default async function RecipePage({
   const totalTime = (recipe.prepTime ?? 0) + (recipe.cookTime ?? 0);
   const ingredients = recipe.ingredients.map((ing) => {
     let text = `${ing.quantity} ${ing.unit} ${ing.name}`;
-    if (ing.notes) {
-      text += `, ${ing.notes}`;
+    if (ing.prepNotes) {
+      text += `, ${ing.prepNotes}`;
     }
     return text;
   });

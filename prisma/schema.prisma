@@ -62,14 +62,14 @@ enum Difficulty {
 
 // Ingredient within a recipe
 model Ingredient {
-  id       String             @id @default(cuid())
-  quantity Float
-  unit     String
-  name     String
-  category IngredientCategory @default(OTHER)
-  notes    String? // "diced", "room temperature"
-  recipeId String
-  recipe   Recipe             @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  id        String             @id @default(cuid())
+  quantity  Float
+  unit      String
+  name      String             // Shopping item name (e.g., "Chicken Breast")
+  category  IngredientCategory @default(OTHER)
+  prepNotes String?            // Prep instructions (e.g., "cubed", "minced")
+  recipeId  String
+  recipe    Recipe             @relation(fields: [recipeId], references: [id], onDelete: Cascade)
 }
 
 enum IngredientCategory {
