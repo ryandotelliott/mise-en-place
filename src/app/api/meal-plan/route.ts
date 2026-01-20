@@ -11,8 +11,29 @@ function formatDate(date: Date): { date: string; formattedDate: string } {
   const targetDate = new Date(date);
   targetDate.setHours(0, 0, 0, 0);
 
-  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const formatted = `${dayNames[targetDate.getDay()].slice(0, 3)}, ${monthNames[targetDate.getMonth()]} ${targetDate.getDate()}`;
 

@@ -8,6 +8,7 @@ export function InstructionsList({ instructions }: InstructionsListProps) {
       <h2 className="font-semibold text-lg text-foreground">Instructions</h2>
       <ol className="flex flex-col gap-6">
         {instructions.map((step, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: instructions should be static and unique
           <li key={`step-${i}`} className="flex gap-4">
             <span className="flex-none flex items-center justify-center size-7 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
               {i + 1}

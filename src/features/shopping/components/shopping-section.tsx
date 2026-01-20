@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { LayoutGroup } from "framer-motion";
+import { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShoppingItem } from "@/features/shopping/components/shopping-item";
 

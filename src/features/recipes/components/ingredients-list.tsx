@@ -33,6 +33,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
       <div className="border border-border rounded-xl p-4 md:p-5">
         <ul className="flex flex-col gap-1">
           {ingredients.map((ingredient, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: ingredients should be static and unique
             <li key={`ingredient-${i}`} className="-mx-2">
               <CheckboxItem
                 checked={checked.has(i)}

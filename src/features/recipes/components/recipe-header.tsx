@@ -1,4 +1,4 @@
-import { ChevronLeft, Clock, UtensilsCrossed, Users } from "lucide-react";
+import { ChevronLeft, Clock, Users, UtensilsCrossed } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -60,7 +60,10 @@ export function RecipeHeader({
         </h1>
 
         <div className="flex items-center gap-5 text-sm">
-          <Badge variant="outline" className={`rounded-full px-3 py-1 text-xs font-medium ${badgeColor}`}>
+          <Badge
+            variant="outline"
+            className={`rounded-full px-3 py-1 text-xs font-medium ${badgeColor}`}
+          >
             {difficulty}
           </Badge>
           <div className="flex items-center gap-1.5 text-muted-foreground">
@@ -78,7 +81,10 @@ export function RecipeHeader({
 
       {/* Mobile Meta Info */}
       <div className="md:hidden px-5 pt-5 flex flex-wrap items-center gap-3 text-sm mb-6">
-        <Badge variant="outline" className={`rounded-full px-3 py-0.5 text-xs font-medium ${badgeColor}`}>
+        <Badge
+          variant="outline"
+          className={`rounded-full px-3 py-0.5 text-xs font-medium ${badgeColor}`}
+        >
           {difficulty}
         </Badge>
         <div className="flex items-center gap-1.5 text-muted-foreground">

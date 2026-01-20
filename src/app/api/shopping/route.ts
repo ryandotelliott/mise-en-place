@@ -1,7 +1,17 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
-const categoryOrder = ["PRODUCE", "MEAT", "SEAFOOD", "DAIRY", "BAKERY", "PANTRY", "FROZEN", "BEVERAGES", "OTHER"];
+const categoryOrder = [
+  "PRODUCE",
+  "MEAT",
+  "SEAFOOD",
+  "DAIRY",
+  "BAKERY",
+  "PANTRY",
+  "FROZEN",
+  "BEVERAGES",
+  "OTHER",
+];
 
 const categoryLabels: Record<string, string> = {
   PRODUCE: "Produce",
@@ -41,19 +51,25 @@ export async function GET() {
   }
 
   // Collect all ingredients grouped by category and recipe
-  const ingredientsByCategory: Record<string, Array<{
-    id: string;
-    name: string;
-    quantity: string;
-    recipe: string;
-  }>> = {};
+  const ingredientsByCategory: Record<
+    string,
+    Array<{
+      id: string;
+      name: string;
+      quantity: string;
+      recipe: string;
+    }>
+  > = {};
 
-  const ingredientsByRecipe: Record<string, Array<{
-    id: string;
-    name: string;
-    quantity: string;
-    recipe: string;
-  }>> = {};
+  const ingredientsByRecipe: Record<
+    string,
+    Array<{
+      id: string;
+      name: string;
+      quantity: string;
+      recipe: string;
+    }>
+  > = {};
 
   for (const day of mealPlan.days) {
     for (const meal of day.meals) {
