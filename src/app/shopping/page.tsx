@@ -101,6 +101,7 @@ export default function ShoppingPage() {
                   checked={checked}
                   onToggle={toggleItem}
                   layoutGroupId={`category-${section.category}`}
+                  collapsible
                 />
               ))
             : byRecipe.map((recipe) => (
